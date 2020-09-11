@@ -9,5 +9,6 @@ namespace tp_winform_Majdalani_Cacchione
     class Articulo
     {
         //Hola andy
+        //Hola jero
     }
 }
