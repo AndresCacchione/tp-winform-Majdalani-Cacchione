@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.30330.147
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tp-winform-Majdalani-Cacchione", "tp-winform-Majdalani-Cacchione\tp-winform-Majdalani-Cacchione.csproj", "{7AF51315-0776-47A6-9585-99E8A092C8C5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dominio", "Dominio\Dominio.csproj", "{32967938-09C9-4D46-9752-AF62DAEF54C9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Negocio", "Negocio\Negocio.csproj", "{95D02F53-08B3-4B09-80D4-DA421D4AA53C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{7AF51315-0776-47A6-9585-99E8A092C8C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7AF51315-0776-47A6-9585-99E8A092C8C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7AF51315-0776-47A6-9585-99E8A092C8C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32967938-09C9-4D46-9752-AF62DAEF54C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32967938-09C9-4D46-9752-AF62DAEF54C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32967938-09C9-4D46-9752-AF62DAEF54C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32967938-09C9-4D46-9752-AF62DAEF54C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95D02F53-08B3-4B09-80D4-DA421D4AA53C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95D02F53-08B3-4B09-80D4-DA421D4AA53C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95D02F53-08B3-4B09-80D4-DA421D4AA53C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95D02F53-08B3-4B09-80D4-DA421D4AA53C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
