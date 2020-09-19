@@ -21,9 +21,15 @@ namespace tp_winform_Majdalani_Cacchione
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            cargar();
+        }
+
+        private void cargar()
+        {
             ArticuloNegocio negocio = new ArticuloNegocio();
             dgvlista.DataSource = negocio.listar();
-            dgvlista.Columns[2].Visible = false;
+            dgvlista.Columns[3].Visible = false;
+            dgvlista.Columns[0].Visible = false;
         }
 
         private void dgvlista_SelectionChanged(object sender, EventArgs e)
@@ -42,6 +48,12 @@ namespace tp_winform_Majdalani_Cacchione
         {
             frmAlta alta = new frmAlta();
             alta.ShowDialog();
+            cargar();
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

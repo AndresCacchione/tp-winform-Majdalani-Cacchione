@@ -19,7 +19,7 @@ namespace Negocio
 
             conexion.ConnectionString = "data source= ANDRES-PC\\SQLEXPRESS01; initial catalog=CATALOGO_DB; integrated security=sspi";
             comando.CommandType = System.Data.CommandType.Text;
-            comando.CommandText = "select a.Id, a.Codigo, a.Nombre, a.Descripcion ArtDescripcion, m.Descripcion MarDescripcion, c.Descripcion CatDescripcion, a.ImagenUrl, a.Precio from ARTICULOS as a inner join MARCAS as m on m.Id = a.Id inner join CATEGORIAS as c on c.Id = a.Id";
+            comando.CommandText = "select a.Id, a.Codigo, a.Nombre, a.Descripcion ArtDescripcion, m.Descripcion MarDescripcion, c.Descripcion CatDescripcion, a.ImagenUrl, a.Precio from ARTICULOS as a, MARCAS as m, CATEGORIAS as c where m.Id = a.IdMarca and c.Id = a.IdCategoria";
             comando.Connection = conexion;
 
             conexion.Open();
@@ -32,6 +32,9 @@ namespace Negocio
                 aux.Imagen = (string)lector["ImagenUrl"];
                 aux.Marca.Descripcion = (string)lector["MarDescripcion"];
                 aux.Categoria.Descripcion = (string)lector["CatDescripcion"];
+                aux.Precio = (decimal)lector["Precio"];
+                aux.Codigo = (string)lector["Codigo"];
+                aux.ID = (int)lector["Id"];
                 lista.Add(aux);
             }
 
@@ -47,13 +50,16 @@ namespace Negocio
        
             conexion.ConnectionString = "data source= ANDRES-PC\\SQLEXPRESS01; initial catalog=CATALOGO_DB; integrated security=sspi";
             comando.CommandType = System.Data.CommandType.Text;
-            comando.CommandText = "insert into Articulos (Nombre, Descripcion, ) values('','');
+            comando.CommandText = "insert into Articulos (Codigo, Nombre, Descripcion, idMarca, idcategoria, ImagenUrl, Precio) values('"+articulo.Codigo + "','" + articulo.Nombre + "','" + articulo.Descripción + "',@idMarca, @idCategoria, '" + articulo.Imagen + "','" + articulo.Precio + "')";
+            comando.Parameters.AddWithValue("@idMarca", articulo.Marca.ID);
+            comando.Parameters.AddWithValue("@idCategoria", articulo.Categoria.ID);
+
             comando.Connection = conexion;
-
+            
             conexion.Open();
-            //comando.ExecuteReader();
+            comando.ExecuteNonQuery();
 
-
+            conexion.Close();
         }
     }
 }
