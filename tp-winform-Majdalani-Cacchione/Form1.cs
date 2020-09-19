@@ -37,5 +37,11 @@ namespace tp_winform_Majdalani_Cacchione
             {
             }
         }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            frmAlta alta = new frmAlta();
+            alta.ShowDialog();
+        }
     }
 }
