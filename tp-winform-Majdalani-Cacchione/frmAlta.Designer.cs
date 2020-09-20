@@ -167,7 +167,7 @@
             this.btnAgregarAlta.Name = "btnAgregarAlta";
             this.btnAgregarAlta.Size = new System.Drawing.Size(75, 23);
             this.btnAgregarAlta.TabIndex = 14;
-            this.btnAgregarAlta.Text = "Agregar";
+            this.btnAgregarAlta.Text = "Aceptar";
             this.btnAgregarAlta.UseVisualStyleBackColor = true;
             this.btnAgregarAlta.Click += new System.EventHandler(this.btnAgregarAlta_Click);
             // 

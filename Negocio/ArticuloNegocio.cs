@@ -47,7 +47,27 @@ namespace Negocio
 
         public void modificar(Articulo articulo)
         {
-            throw new NotImplementedException();
+            SqlConnection conexion = new SqlConnection();
+            SqlCommand comando = new SqlCommand();
+
+            conexion.ConnectionString = "data source= NAB\\SQLEXPRESS01; initial catalog=CATALOGO_DB; integrated security=sspi";
+            comando.CommandType = System.Data.CommandType.Text;
+            comando.CommandText = "update Articulos set Codigo=@Codigo, Nombre=@Nombre, Descripcion=@Descripcion, idMarca=@idMarca, idcategoria=@idcategoria, ImagenUrl=@ImagenUrl, Precio=@Precio where Id=@ID";
+            comando.Parameters.AddWithValue("@idMarca", articulo.Marca.ID);
+            comando.Parameters.AddWithValue("@idCategoria", articulo.Categoria.ID);
+            comando.Parameters.AddWithValue("@Codigo", articulo.Codigo);
+            comando.Parameters.AddWithValue("@Nombre", articulo.Nombre);
+            comando.Parameters.AddWithValue("@Descripcion", articulo.Descripción);
+            comando.Parameters.AddWithValue("@ImagenUrl", articulo.Imagen);
+            comando.Parameters.AddWithValue("@Precio", articulo.Precio);
+            comando.Parameters.AddWithValue("@ID", articulo.ID);
+
+            comando.Connection = conexion;
+
+            conexion.Open();
+            comando.ExecuteNonQuery();
+
+            conexion.Close();
         }
 
         public void agregar(Articulo articulo)
@@ -66,6 +86,21 @@ namespace Negocio
             conexion.Open();
             comando.ExecuteNonQuery();
 
+            conexion.Close();
+        }
+
+        public void eliminar(int ID)
+        {
+            SqlConnection conexion = new SqlConnection();
+            SqlCommand comando = new SqlCommand();
+            conexion.ConnectionString = "data source= NAB\\SQLEXPRESS01; initial catalog=CATALOGO_DB; integrated security=sspi";
+            comando.CommandType = System.Data.CommandType.Text;
+            comando.CommandText = "delete from articulos where id=@ID";
+            comando.Parameters.AddWithValue("@ID", ID);
+            comando.Connection = conexion;
+
+            conexion.Open();
+            comando.ExecuteNonQuery();
             conexion.Close();
         }
     }

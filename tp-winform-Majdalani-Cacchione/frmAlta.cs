@@ -86,8 +86,8 @@ namespace tp_winform_Majdalani_Cacchione
            
             cmbCategoria.SelectedIndex = -1;
             cmbMarca.SelectedIndex = -1;
-
-            if(articulo!= null)
+            btnAgregarAlta.Text = "Agregar";
+            if (articulo!= null)
             {
                 txtCodigo.Text = articulo.Codigo;
                 txtDescripcion.Text = articulo.Descripción;
@@ -97,6 +97,7 @@ namespace tp_winform_Majdalani_Cacchione
                 cmbMarca.SelectedValue = articulo.Marca.ID;
                 cmbCategoria.SelectedValue = articulo.Categoria.ID;
                 Text = "Modificar Artículo";
+                btnAgregarAlta.Text = "Modificar";
             }
       
 

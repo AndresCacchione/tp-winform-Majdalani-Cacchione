@@ -64,5 +64,13 @@ namespace tp_winform_Majdalani_Cacchione
             modificar.ShowDialog();
             cargar();
         }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            ArticuloNegocio art = new ArticuloNegocio();
+            art.eliminar(((Articulo)dgvlista.CurrentRow.DataBoundItem).ID);
+            MessageBox.Show("Eliminado correctamente", "Eliminación");
+            cargar();
+        }
     }
 }
