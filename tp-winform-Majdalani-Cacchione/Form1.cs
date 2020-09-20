@@ -14,6 +14,7 @@ namespace tp_winform_Majdalani_Cacchione
 {
     public partial class Form1 : Form
     {
+        private List<Articulo> listaOriginal;
         public Form1()
         {
             InitializeComponent();
@@ -26,8 +27,10 @@ namespace tp_winform_Majdalani_Cacchione
 
         private void cargar()
         {
+
             ArticuloNegocio negocio = new ArticuloNegocio();
-            dgvlista.DataSource = negocio.listar();
+            listaOriginal = negocio.listar();
+            dgvlista.DataSource = listaOriginal;
             dgvlista.Columns[3].Visible = false;
             dgvlista.Columns[0].Visible = false;
         }
@@ -71,6 +74,20 @@ namespace tp_winform_Majdalani_Cacchione
             art.eliminar(((Articulo)dgvlista.CurrentRow.DataBoundItem).ID);
             MessageBox.Show("Eliminado correctamente", "Eliminación");
             cargar();
+        }
+
+
+        private void txtBuscar_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(txtBuscar.Text=="")
+            {
+                dgvlista.DataSource = listaOriginal;
+            }
+            else
+            {
+                List<Articulo> ListaFiltrada = listaOriginal.FindAll(x => x.Nombre.ToLower().Contains(txtBuscar.Text.ToLower()) || x.Descripción.ToLower().Contains(txtBuscar.Text.ToLower()));
+                dgvlista.DataSource = ListaFiltrada;
+            }
         }
     }
 }

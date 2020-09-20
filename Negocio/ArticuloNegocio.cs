@@ -50,7 +50,7 @@ namespace Negocio
             SqlConnection conexion = new SqlConnection();
             SqlCommand comando = new SqlCommand();
 
-            conexion.ConnectionString = "data source=.\\SQLEXPRESS01; initial catalog=CATALOGO_DB; integrated security=sspi";
+            conexion.ConnectionString = "data source=NAB\\SQLEXPRESS01; initial catalog=CATALOGO_DB; integrated security=sspi";
             comando.CommandType = System.Data.CommandType.Text;
             comando.CommandText = "update Articulos set Codigo=@Codigo, Nombre=@Nombre, Descripcion=@Descripcion, idMarca=@idMarca, idcategoria=@idcategoria, ImagenUrl=@ImagenUrl, Precio=@Precio where Id=@ID";
             comando.Parameters.AddWithValue("@idMarca", articulo.Marca.ID);
@@ -77,7 +77,7 @@ namespace Negocio
        
             conexion.ConnectionString = "data source=.\\SQLEXPRESS01; initial catalog=CATALOGO_DB; integrated security=sspi";
             comando.CommandType = System.Data.CommandType.Text;
-            comando.CommandText = "insert into Articulos (Codigo, Nombre, Descripcion, idMarca, idcategoria, ImagenUrl, Precio) values('"+articulo.Codigo + "','" + articulo.Nombre + "','" + articulo.Descripción + "',@idMarca, @idCategoria, '" + articulo.Imagen + "','" + articulo.Precio + "')";
+            comando.CommandText = "insert into Articulos(Codigo, Nombre, Descripcion, idMarca, idcategoria, ImagenUrl, Precio) values('"+articulo.Codigo+"','"+articulo.Nombre+"','"+articulo.Descripción+"',@idMarca, @idCategoria, '"+articulo.Imagen+"','"+articulo.Precio+"')";
             comando.Parameters.AddWithValue("@idMarca", articulo.Marca.ID);
             comando.Parameters.AddWithValue("@idCategoria", articulo.Categoria.ID);
 
