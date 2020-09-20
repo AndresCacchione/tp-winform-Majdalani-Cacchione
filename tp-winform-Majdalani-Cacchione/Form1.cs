@@ -55,5 +55,14 @@ namespace tp_winform_Majdalani_Cacchione
         {
             Close();
         }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            Articulo Art;
+            Art = (Articulo)dgvlista.CurrentRow.DataBoundItem;
+            frmAlta modificar = new frmAlta(Art);
+            modificar.ShowDialog();
+            cargar();
+        }
     }
 }
