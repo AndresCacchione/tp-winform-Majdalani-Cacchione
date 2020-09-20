@@ -37,8 +37,9 @@ namespace tp_winform_Majdalani_Cacchione
 
             if (articulo == null)
                 articulo = new Articulo();
-            
-            if (cmbCategoria.SelectedIndex >= 0 && cmbMarca.SelectedIndex >= 0 && txtNombre.Text!="" && txtDescripcion.Text != "" && txtCodigo.Text!="" && txtPrecio.Text!="")
+            Validaciones val = new Validaciones();
+            bool[] resultados = val.validacionesfrmAlta(txtCodigo.Text, txtNombre.Text, txtDescripcion.Text, txtPrecio.Text, cmbMarca.SelectedIndex, cmbCategoria.SelectedIndex);
+            if (resultados[0] && resultados[1] && resultados[2] && resultados[3] && resultados[4] && resultados[5])
             {
                 ArticuloNegocio negocio = new ArticuloNegocio();
                 articulo.Nombre = txtNombre.Text;
@@ -63,14 +64,22 @@ namespace tp_winform_Majdalani_Cacchione
             }
 
             else
+            {
+                if (!resultados[0]) txtCodigo.BackColor = Color.Red;
+                if (!resultados[1]) txtNombre.BackColor = Color.Red;
+                if (!resultados[2]) txtDescripcion.BackColor = Color.Red;
+                if (!resultados[3]) txtPrecio.BackColor = Color.Red;
+                if (!resultados[4]) cmbMarca.BackColor = Color.Red;
+                if (!resultados[5]) cmbCategoria.BackColor = Color.Red;
                 MessageBox.Show("Campos incompletos", "Error de carga");
-
+            }
         }
 
         private void txtPrecio_KeyPress(object sender, KeyPressEventArgs e)
         {
             if((e.KeyChar < 48 || e.KeyChar > 59) && e.KeyChar != 8 && e.KeyChar != 46)
                     e.Handled = true;
+            txtPrecio.BackColor = System.Drawing.Color.White;
         }
 
         private void frmAlta_Load(object sender, EventArgs e)
@@ -102,7 +111,30 @@ namespace tp_winform_Majdalani_Cacchione
       
 
         }
-         
 
+        private void txtCodigo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            txtCodigo.BackColor = System.Drawing.Color.White;
+        }
+
+        private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            txtNombre.BackColor = System.Drawing.Color.White;
+        }
+
+        private void txtDescripcion_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            txtDescripcion.BackColor = System.Drawing.Color.White;
+        }
+
+        private void cmbMarca_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cmbMarca.BackColor = System.Drawing.Color.White;
+        }
+
+        private void cmbCategoria_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cmbCategoria.BackColor = System.Drawing.Color.White;
+        }
     }
 }

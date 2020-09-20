@@ -17,7 +17,7 @@ namespace Negocio
             SqlDataReader lector;
             List<Articulo> lista = new List<Articulo>();
 
-            conexion.ConnectionString = "data source= NAB\\SQLEXPRESS01; initial catalog=CATALOGO_DB; integrated security=sspi";
+            conexion.ConnectionString = "data source=.\\SQLEXPRESS01; initial catalog=CATALOGO_DB; integrated security=sspi";
             comando.CommandType = System.Data.CommandType.Text;
             comando.CommandText = "select a.Id, a.Codigo, a.Nombre, a.Descripcion ArtDescripcion, m.Descripcion MarDescripcion,m.id IdMarca,c.id IdCategoria, c.Descripcion CatDescripcion, a.ImagenUrl, a.Precio from ARTICULOS as a, MARCAS as m, CATEGORIAS as c where m.Id = a.IdMarca and c.Id = a.IdCategoria";
             comando.Connection = conexion;
@@ -50,7 +50,7 @@ namespace Negocio
             SqlConnection conexion = new SqlConnection();
             SqlCommand comando = new SqlCommand();
 
-            conexion.ConnectionString = "data source= NAB\\SQLEXPRESS01; initial catalog=CATALOGO_DB; integrated security=sspi";
+            conexion.ConnectionString = "data source=.\\SQLEXPRESS01; initial catalog=CATALOGO_DB; integrated security=sspi";
             comando.CommandType = System.Data.CommandType.Text;
             comando.CommandText = "update Articulos set Codigo=@Codigo, Nombre=@Nombre, Descripcion=@Descripcion, idMarca=@idMarca, idcategoria=@idcategoria, ImagenUrl=@ImagenUrl, Precio=@Precio where Id=@ID";
             comando.Parameters.AddWithValue("@idMarca", articulo.Marca.ID);
@@ -75,7 +75,7 @@ namespace Negocio
             SqlConnection conexion = new SqlConnection();
             SqlCommand comando = new SqlCommand();
        
-            conexion.ConnectionString = "data source= NAB\\SQLEXPRESS01; initial catalog=CATALOGO_DB; integrated security=sspi";
+            conexion.ConnectionString = "data source=.\\SQLEXPRESS01; initial catalog=CATALOGO_DB; integrated security=sspi";
             comando.CommandType = System.Data.CommandType.Text;
             comando.CommandText = "insert into Articulos (Codigo, Nombre, Descripcion, idMarca, idcategoria, ImagenUrl, Precio) values('"+articulo.Codigo + "','" + articulo.Nombre + "','" + articulo.Descripción + "',@idMarca, @idCategoria, '" + articulo.Imagen + "','" + articulo.Precio + "')";
             comando.Parameters.AddWithValue("@idMarca", articulo.Marca.ID);
@@ -93,7 +93,7 @@ namespace Negocio
         {
             SqlConnection conexion = new SqlConnection();
             SqlCommand comando = new SqlCommand();
-            conexion.ConnectionString = "data source= NAB\\SQLEXPRESS01; initial catalog=CATALOGO_DB; integrated security=sspi";
+            conexion.ConnectionString = "data source=.\\SQLEXPRESS01; initial catalog=CATALOGO_DB; integrated security=sspi";
             comando.CommandType = System.Data.CommandType.Text;
             comando.CommandText = "delete from articulos where id=@ID";
             comando.Parameters.AddWithValue("@ID", ID);
