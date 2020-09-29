@@ -10,17 +10,17 @@ namespace tp_winform_Majdalani_Cacchione
 {
     public class Validaciones
     {
-        public bool[] validacionesfrmAlta(string codigo, string nombre, string descripcion, string precio, int indexMarca, int indexCategoria)
+        public bool[] validacionesfrmAlta(string codigo, string nombre, string descripcion, string precio, int indexMarca, int indexCategoria, string imagen)
         {
-            bool[] validacion = new bool[6];
+            bool[] validacion = new bool[7];
             //codigo
-            if (validarStr(codigo))
+            if (validarStr(codigo, 50))
                 validacion[0] = true;
             //Nombre
-            if (validarStr(nombre))
+            if (validarStr(nombre, 50))
                 validacion[1] = true;
             //Descripcion
-            if (validarStr(descripcion))
+            if (validarStr(descripcion, 150))
                 validacion[2] = true;
             //Precio
             if (validarPrecio(precio))
@@ -31,11 +31,21 @@ namespace tp_winform_Majdalani_Cacchione
             //Marca
             if (validarCbobox(indexCategoria))
                 validacion[5] = true;
+            //Imagen
+            if (validarStrOptativo(imagen, 1000))
+                validacion[6] = true;
             return validacion;
         }
-        public bool validarStr(string cadena)
+        public bool validarStr(string cadena, int maxlength)
         {
-            if(cadena.Length > 0)
+            if((cadena.Length > 0) && (cadena.Length < maxlength))
+                return true;
+            return false;
+        }
+
+        public bool validarStrOptativo(string cadena, int maxlength)
+        {
+            if (cadena.Length < maxlength)
                 return true;
             return false;
         }

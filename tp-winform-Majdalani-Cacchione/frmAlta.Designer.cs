@@ -147,6 +147,7 @@
             this.txtImagen.Name = "txtImagen";
             this.txtImagen.Size = new System.Drawing.Size(100, 20);
             this.txtImagen.TabIndex = 11;
+            this.txtImagen.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtImagen_KeyPress);
             // 
             // cmbMarca
             // 

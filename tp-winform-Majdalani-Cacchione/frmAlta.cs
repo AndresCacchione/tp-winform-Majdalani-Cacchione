@@ -38,8 +38,8 @@ namespace tp_winform_Majdalani_Cacchione
             if (articulo == null)
                 articulo = new Articulo();
             Validaciones val = new Validaciones();
-            bool[] resultados = val.validacionesfrmAlta(txtCodigo.Text, txtNombre.Text, txtDescripcion.Text, txtPrecio.Text, cmbMarca.SelectedIndex, cmbCategoria.SelectedIndex);
-            if (resultados[0] && resultados[1] && resultados[2] && resultados[3] && resultados[4] && resultados[5])
+            bool[] resultados = val.validacionesfrmAlta(txtCodigo.Text, txtNombre.Text, txtDescripcion.Text, txtPrecio.Text, cmbMarca.SelectedIndex, cmbCategoria.SelectedIndex, txtImagen.Text);
+            if (resultados[0] && resultados[1] && resultados[2] && resultados[3] && resultados[4] && resultados[5] && resultados[6])
             {
                 ArticuloNegocio negocio = new ArticuloNegocio();
                 articulo.Nombre = txtNombre.Text;
@@ -71,7 +71,8 @@ namespace tp_winform_Majdalani_Cacchione
                 if (!resultados[3]) txtPrecio.BackColor = Color.Red;
                 if (!resultados[4]) cmbMarca.BackColor = Color.Red;
                 if (!resultados[5]) cmbCategoria.BackColor = Color.Red;
-                MessageBox.Show("Campos incompletos", "Error de carga");
+                if (!resultados[6]) txtImagen.BackColor = Color.Red;
+                MessageBox.Show("Campos incorrectos: falta de carga o excede máximo de caracteres", "Error de carga");
             }
         }
 
@@ -135,6 +136,11 @@ namespace tp_winform_Majdalani_Cacchione
         private void cmbCategoria_SelectedIndexChanged(object sender, EventArgs e)
         {
             cmbCategoria.BackColor = System.Drawing.Color.White;
+        }
+
+        private void txtImagen_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            txtImagen.BackColor = System.Drawing.Color.White;
         }
     }
 }
